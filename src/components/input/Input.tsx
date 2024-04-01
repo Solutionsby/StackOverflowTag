@@ -9,6 +9,9 @@ export const Input = () =>{
             margin:'2vh auto'
         }}>
         <TextField 
+        sx={{
+            width:'60%'
+        }}
         label= 'Podaj liczbe wierszy'
         type='number'
         />
