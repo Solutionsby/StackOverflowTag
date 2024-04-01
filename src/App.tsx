@@ -1,10 +1,12 @@
 import './App.css'
+import {MainView } from './components/mainView/MainView'
 
 function App() {
 
 
   return (
     <>
+    <MainView  />
     </>
   )
 }

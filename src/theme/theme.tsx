@@ -13,5 +13,15 @@ const darkTheme = createTheme({
     // Inne opcje kolorów i właściwości tematu
   },
 });
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#2196f3', // Kolor główny
+    },
+    secondary: {
+      main: '#ff9800', // Kolor dodatkowy
+    },
+  },
+});
 
-export { lightTheme, darkTheme };
+export { lightTheme, darkTheme,theme };
