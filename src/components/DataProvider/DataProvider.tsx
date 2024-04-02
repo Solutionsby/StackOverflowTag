@@ -26,24 +26,30 @@ const DataContext = createContext<DataContextType | undefined>(undefined);
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [numberOfRows,  setNumberOfRows] = useState<number>(5);
-  const [order, setOrder] = useState<string>("asc");
+  const [order, setOrder] = useState<string>("desc");
   const [sort, setSort] = useState<string>("popular");
 
+  console.log(tags)
 
   const fetchData = async () => {
+    let allTags:Tag[] = [];
+    for(let page=1; page<=25; page++){
     try {
-      const response = await axios.get('/mokkedStack.json');
+      const response = await axios.get(`https://api.stackexchange.com/2.3/tags?page=${page}&pagesize=100&order=${order}&sort=${sort}&site=stackoverflow`);
       const selectedData = response.data.items.map(({ name, count }: Tag, index: number) => ({
-        id: index + 1,
+        id: (page - 1) * 100 + index + 1,
         name,
         count
       }));
-      setTags(selectedData);
+      allTags =[...allTags, ...selectedData];
+      setTags(allTags);
     } catch (error) {
       console.log("Wystąpił błąd podczas pobierania", error);
     }
-  };
+  }};
 
+  
+  
   const value: DataContextType = {
     tags,
     numberOfRows,

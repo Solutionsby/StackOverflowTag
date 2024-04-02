@@ -24,7 +24,6 @@ export const SelectFetch:React.FC<SelectProps> =({label,selectList,value,set})=>
     set(event.target.value as string);
   };
 
-  console.log(value)
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
