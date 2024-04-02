@@ -10,6 +10,10 @@ export default Tag;
 interface DataContextType {
   tags: Tag[];
   numberOfRows: number;
+  order:string;
+  sort:string;
+  setSort:(sort:string)=>void;
+  setOrder:(order:string)=>void;
   setNumberOfRows:(rows:number) => void;
   fetchData: () => void;
 }
@@ -21,7 +25,9 @@ const DataContext = createContext<DataContextType | undefined>(undefined);
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [tags, setTags] = useState<Tag[]>([]);
-  const [numberOfRows,  setNumberOfRows] = useState<number>(5)
+  const [numberOfRows,  setNumberOfRows] = useState<number>(5);
+  const [order, setOrder] = useState<string>("asc");
+  const [sort, setSort] = useState<string>("popular");
 
 
   const fetchData = async () => {
@@ -41,6 +47,10 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const value: DataContextType = {
     tags,
     numberOfRows,
+    order,
+    sort,
+    setSort,
+    setOrder,
     setNumberOfRows,
     fetchData,
   };
