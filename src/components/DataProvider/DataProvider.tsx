@@ -12,8 +12,6 @@ interface DataContextType {
   numberOfRows: number ;
   order:string;
   sort:string;
-  filterValue:string;
-  setFiterValue:(filter:string)=>void;
   setSort:(sort:string)=>void;
   setOrder:(order:string)=>void;
   setNumberOfRows:(rows:number) => void;
@@ -30,9 +28,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [numberOfRows,  setNumberOfRows] = useState<number>(1);
   const [order, setOrder] = useState<string>("desc");
   const [sort, setSort] = useState<string>("popular");
-  const [filterValue, setFiterValue] = useState<string>('');
 
-  console.log(filterValue)
 
   const fetchData = async () => {
     let allTags:Tag[] = [];
@@ -58,8 +54,6 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     numberOfRows,
     order,
     sort,
-    filterValue,
-    setFiterValue,
     setSort,
     setOrder,
     setNumberOfRows,

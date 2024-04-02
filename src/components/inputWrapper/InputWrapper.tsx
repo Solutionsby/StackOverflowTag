@@ -3,7 +3,7 @@ import { useData } from '../DataProvider/DataProvider';
 
 
 export const InputWrapper = ()=>{
-    const { setNumberOfRows,numberOfRows,setFiterValue,filterValue } = useData();
+    const { setNumberOfRows,numberOfRows} = useData();
     
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
         const parsedValuue = parseInt(e.target.value);
@@ -15,16 +15,12 @@ export const InputWrapper = ()=>{
             } 
         }
     }
-    const handleFilterValue = (e:React.ChangeEvent<HTMLInputElement>) =>{
-        const filterValue = e.target.value;
-        setFiterValue(filterValue)
-    }
 
 
     return(
         <>   
         <Input value={numberOfRows} label={"Podaj liczbe wierszy"} type={'number'} handle={handleChange}/>
-        <Input value={filterValue} label={"Szukaj"}  type={'string'}  handle={handleFilterValue}/>
+        
         </>
     )
 }
