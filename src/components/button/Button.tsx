@@ -1,18 +1,14 @@
 import Button from '@mui/material/Button';
-import { useData } from '../DataProvider/DataProvider';
 
 
 
 interface ButtonActionProps {
     children:React.ReactNode;
+    handleFetchData:() => void;
 }
 
 
-export const ButtonAction: React.FC<ButtonActionProps> =({children})=>{
-    const { fetchData } = useData();
-    const handleFetchData = () => {
-        fetchData();
-      };
+export const ButtonAction: React.FC<ButtonActionProps> =({children,handleFetchData})=>{
    return(
     <Button
     variant="contained"

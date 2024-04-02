@@ -1,9 +1,14 @@
 import Box from '@mui/material/Box';
 import {theme} from '../../theme/theme'
 import { ButtonAction } from '../button/Button';
+import { useData } from '../DataProvider/DataProvider';
 
 
 export const  TopBar = () =>{
+  const { fetchData } = useData();
+  const handleFetchData = () => {
+      fetchData();
+    };
     return(
         <Box sx={{ 
           display:'flex',
@@ -21,7 +26,7 @@ export const  TopBar = () =>{
           fontSize:'2.5vh'
          }}>
         Przeglądarka Tag-ów StackOverflow
-        <ButtonAction>Pobierz Dane</ButtonAction>
+        <ButtonAction handleFetchData={handleFetchData}>Pobierz Dane</ButtonAction>
       </Box>
     )
 }
