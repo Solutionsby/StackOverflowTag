@@ -1,10 +1,13 @@
+import { useState } from 'react';
+import Tag from '../DataProvider/DataProvider';
+import { useData } from '../DataProvider/DataProvider';
+import { DataGrid, GridColDef} from '@mui/x-data-grid';
+import { Box } from '@mui/material';
 
-import Box from '@mui/material/Box';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
-const columns: GridColDef<(typeof rows)[number]>[] = [
+const columns: GridColDef[] = [
   {
-    field: 'tag',
+    field: 'name',
     headerName: 'Tag',
     type:'string',
     width: 200,
@@ -19,25 +22,33 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
   },
 ];
 
-const rows = [
-  { id: 1, tag: 'JavaScript', count: 22},
-];
+export const DataTable: React.FC = () => {
+    const { tags,numberOfRows,setNumberOfRows } = useData();
+    const [currentPage, setCurrentPage] = useState(0);
 
-export const DataTable =()=>  {
-  return (
-    <Box sx={{ height: 400, width: '95%',margin:"1vh auto" }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 5,
-            },
-          },
-        }}
-        pageSizeOptions={[5]}
-      />
-    </Box>
-  );
-}
+    const getPageData = ():Tag[] => {
+      const startIndex = currentPage * numberOfRows;
+      const endIndex = startIndex + numberOfRows;
+      return tags.slice(startIndex, endIndex);
+    };
+    const onPaginationModelChange = (params: { page: number; pageSize: number }) => {
+        setCurrentPage(params.page);
+        setNumberOfRows(params.pageSize);
+      };
+  
+    return (
+      <Box style={{ height: 400, width: '95%', margin: '1vh auto' }}>
+        <DataGrid
+          rows={getPageData()}
+          columns={columns}
+          rowCount={tags.length}
+          paginationMode="server"
+          paginationModel={{
+            page:currentPage,
+            pageSize:numberOfRows
+        }} 
+        onPaginationModelChange={onPaginationModelChange}
+        />
+      </Box>
+    );
+  };
