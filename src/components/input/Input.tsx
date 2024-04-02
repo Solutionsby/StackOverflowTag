@@ -26,10 +26,6 @@ export const Input:React.FC<InputProps>= ({value,label,type,handle}) =>{
         onChange={handle}
         label= {label}
         type={type}
-        inputProps={{
-            min: 0,
-            max:100
-        }}
         />
         </Box>
 

@@ -45,7 +45,7 @@ export const DataTable: React.FC = () => {
         <DataGrid
           rows={getPageData()}
           columns={columns}
-          rowCount={tags.length}
+          rowCount={tags.length}////
           paginationMode="server"
           paginationModel={{
             page:currentPage,
