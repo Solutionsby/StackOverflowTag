@@ -1,5 +1,6 @@
 import { DataTable } from "../dataTable/DataTable"
-import { Input } from "../input/Input"
+import { InputWrapper } from "../inputWrapper/InputWrapper"
+
 import { TopBar } from "../topBar/TopBar"
 
 
@@ -7,7 +8,7 @@ export const  MainView = () =>{
     return(
        <>
        <TopBar />
-       <Input />
+        <InputWrapper />
        <DataTable />
        </>
     )

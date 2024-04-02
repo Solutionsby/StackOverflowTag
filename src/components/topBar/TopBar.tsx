@@ -20,8 +20,6 @@ export const  TopBar = () =>{
       {label:'Nazwie',value:"name"}
     ]
 
-    console.log(order);
-
     return(
         <Box sx={{ 
           display:'flex',

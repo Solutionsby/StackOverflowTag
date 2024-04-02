@@ -1,29 +1,34 @@
-import { useData } from '../DataProvider/DataProvider';
+
 import { Box } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
+interface InputProps{
+    handle: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    value:number | string;
+    label:string;
+    type:string;
+}
 
-export const Input = () =>{
-    const { setNumberOfRows,numberOfRows } = useData();
 
-    const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
-        setNumberOfRows(parseInt(e.target.value));
-    }
+
+export const Input:React.FC<InputProps>= ({value,label,type,handle}) =>{
+
     return (
         <Box sx={{
-            width:'95%',
+            width:'45%',
             margin:'2vh auto'
         }}>
         <TextField 
         sx={{
             width:'60%'
         }}
-        value={numberOfRows}
-        onChange={handleChange}
-        label= 'Podaj liczbe wierszy'
-        type='number'
+        value={value}
+        onChange={handle}
+        label= {label}
+        type={type}
         inputProps={{
-            min: 0
+            min: 0,
+            max:100
         }}
         />
         </Box>
