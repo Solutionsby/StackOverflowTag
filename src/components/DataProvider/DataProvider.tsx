@@ -9,9 +9,11 @@ interface Tag {
 export default Tag;
 interface DataContextType {
   tags: Tag[];
-  numberOfRows: number;
+  numberOfRows: number ;
   order:string;
   sort:string;
+  filterValue:string;
+  setFiterValue:(filter:string)=>void;
   setSort:(sort:string)=>void;
   setOrder:(order:string)=>void;
   setNumberOfRows:(rows:number) => void;
@@ -25,11 +27,12 @@ const DataContext = createContext<DataContextType | undefined>(undefined);
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [tags, setTags] = useState<Tag[]>([]);
-  const [numberOfRows,  setNumberOfRows] = useState<number>(5);
+  const [numberOfRows,  setNumberOfRows] = useState<number>(1);
   const [order, setOrder] = useState<string>("desc");
   const [sort, setSort] = useState<string>("popular");
+  const [filterValue, setFiterValue] = useState<string>('');
 
-  console.log(tags)
+  console.log(filterValue)
 
   const fetchData = async () => {
     let allTags:Tag[] = [];
@@ -55,6 +58,8 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     numberOfRows,
     order,
     sort,
+    filterValue,
+    setFiterValue,
     setSort,
     setOrder,
     setNumberOfRows,

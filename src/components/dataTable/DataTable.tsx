@@ -23,13 +23,17 @@ const columns: GridColDef[] = [
 ];
 
 export const DataTable: React.FC = () => {
-    const { tags,numberOfRows,setNumberOfRows } = useData();
+    const { tags,numberOfRows,setNumberOfRows,filterValue } = useData();
     const [currentPage, setCurrentPage] = useState(0);
+
 
     const getPageData = ():Tag[] => {
       const startIndex = currentPage * numberOfRows;
       const endIndex = startIndex + numberOfRows;
-      return tags.slice(startIndex, endIndex);
+      let filteredTags = filterValue !== ''
+      ? tags.filter(tag => tag.name.toLowerCase().includes(filterValue.toLowerCase()))
+      : tags
+      return filteredTags.slice(startIndex, endIndex)
     };
     const onPaginationModelChange = (params: { page: number; pageSize: number }) => {
         setCurrentPage(params.page);
