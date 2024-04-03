@@ -2,7 +2,7 @@ import { useState } from "react";
 import Tag from "../DataProvider/DataProvider";
 import { useData } from "../DataProvider/DataProvider";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { Box } from "@mui/material";
+import { Box} from "@mui/material";
 
 const columns: GridColDef[] = [
   {
@@ -43,8 +43,11 @@ export const DataTable: React.FC = () => {
     setNumberOfRows(params.pageSize);
   };
 
+
+
   return (
-    <Box style={{ height: 400, width: "95%", margin: "1vh auto" }}>
+   
+    <Box sx={{ height: "60vh", width: "95%", margin: "1vh auto",}}>
       <DataGrid
         rows={getPageData()}
         columns={columns}
@@ -58,5 +61,6 @@ export const DataTable: React.FC = () => {
         onPaginationModelChange={onPaginationModelChange}
       />
     </Box>
+
   );
 };

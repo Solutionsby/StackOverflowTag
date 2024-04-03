@@ -40,12 +40,13 @@ export const  TopBar = () =>{
         <Box sx={{
           display:'flex',
           justifyContent:'space-around',
-          width:'80%'
+          alignItems:"center",
+          width:'95%'
 
         }}>
         <SelectFetch label={'Uporządkuj'} selectList={orderSelect} value={order} set={setOrder} />
         <SelectFetch label={'Sortowanie'} selectList={sortSelect} value={sort} set={setSort} />
-        <ButtonAction handleFetchData={handleFetchData} fetchFlag={fetchFlag}>Pobierz Dane</ButtonAction>
+        <ButtonAction handleFetchData={handleFetchData} fetchFlag={fetchFlag} >Pobierz Dane</ButtonAction>
         </Box>
       </Box>
     )
