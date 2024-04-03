@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
 
@@ -22,17 +21,10 @@ export const Input: React.FC<InputProps> = ({
 
 }) => {
   return (
-    <Box
-      sx={{
-        width: "45%",
-        margin: "2vh auto",
-      }}
-    >
       <TextField
-        sx={{
-          
-width: "60%",
-        }}
+      sx={{
+        width:"35%"
+      }}
         error={status}
         value={value}
         onChange={handle}
@@ -44,6 +36,6 @@ width: "60%",
           max: 100,
         }}
       />
-    </Box>
+
   );
 };

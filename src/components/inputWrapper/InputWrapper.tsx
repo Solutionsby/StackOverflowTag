@@ -1,6 +1,7 @@
 import { Input } from "../input/Input";
 import { useData } from "../DataProvider/DataProvider";
 import { useState } from "react";
+import { Box} from "@mui/material";
 
 export const InputWrapper = () => {
   const { setNumberOfRows, numberOfRows } = useData();
@@ -28,11 +29,14 @@ export const InputWrapper = () => {
         break;
     }
   };
-
   const labelTitle = (label: string) => (status ? "Error" : label);
-
   return (
-    <>
+   <Box sx={{
+    display:'flex',
+    margin:'3vh',
+    justifyContent:'start',
+    alignItems:'center'
+   }}>
       <Input
         value={numberOfRows}
         label={labelTitle("Podaj liczbę wierszy")}
@@ -41,6 +45,6 @@ export const InputWrapper = () => {
         helperText={errorMSG}
         status={status}
       />
-    </>
+      </Box>
   );
 };
