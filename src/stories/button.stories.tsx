@@ -7,6 +7,7 @@ export default {
   argTypes: {
     customColor: { control: "color" },
     size: { control: "radio", options: ["small", "medium", "large"] },
+    variant:{control:"select", options:["text","outlined","contained"]}
   },
 } as Meta;
 
@@ -18,15 +19,12 @@ export const Primary = Template.bind({});
 Primary.args = {
   children: "Pobierz dane",
   customColor: "#ab9990",
+  variant:'outlined'
 };
 
-export const CustomColor = Template.bind({});
-CustomColor.args = {
-  ...Primary.args,
-  customColor: "#ff00ff",
-};
-export const LargeSize = Template.bind({});
-LargeSize.args = {
+export const CustomButton = Template.bind({});
+CustomButton.args = {
   ...Primary.args,
   size: "large",
-};
+}
+

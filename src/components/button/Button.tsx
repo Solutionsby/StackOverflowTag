@@ -6,6 +6,7 @@ export interface ButtonActionProps {
   handleFetchData: () => void;
   customColor?: string;
   size?: "small" | "medium" | "large";
+  variant?:"text" | "outlined" | "contained";
 }
 
 export const ButtonAction: React.FC<ButtonActionProps> = ({
@@ -13,6 +14,7 @@ export const ButtonAction: React.FC<ButtonActionProps> = ({
   handleFetchData,
   customColor,
   size = "medium",
+  variant="contained"
 }) => {
   const buttonColor = customColor ? customColor : "white";
 
@@ -20,9 +22,8 @@ export const ButtonAction: React.FC<ButtonActionProps> = ({
     <Button
       sx={{ bgcolor: buttonColor, color: "black" }}
       size={size}
-      variant="contained"
+      variant={variant}
       onClick={handleFetchData}
-      className="downloadButton"
     >
       {children}
     </Button>
