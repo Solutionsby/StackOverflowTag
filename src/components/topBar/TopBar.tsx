@@ -31,9 +31,9 @@ export const  TopBar = () =>{
           borderBottomRightRadius:15,
           borderBottomLeftRadius:15,
           margin:'0 auto',
-          bgcolor:theme.palette.primary.main,
+          border:"2px solid ",
           fontFamily:'sans-serif',
-          color:'white',
+          color:theme.palette.primary.main,
           fontSize:'2.5vh'
          }}>
         Przeglądarka Tag-ów StackOverflow

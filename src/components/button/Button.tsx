@@ -14,13 +14,10 @@ export const ButtonAction: React.FC<ButtonActionProps> = ({
   children,
   fetchFlag,
   size = "medium",
-  variant="contained",
+  variant="outlined",
   color=(fetchFlag === null ? 'primary': (fetchFlag ? "success" : "error")),
   handleFetchData,
 }) => {
-
-
-
   return (
     <Button
       color={color}

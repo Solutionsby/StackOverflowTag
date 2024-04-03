@@ -38,7 +38,7 @@ export const InputWrapper = () => {
         label={labelTitle("Podaj liczbę wierszy")}
         type={"number"}
         handle={handleChange}
-        error={errorMSG}
+        helperText={errorMSG}
         status={status}
       />
     </>

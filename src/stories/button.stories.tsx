@@ -16,7 +16,7 @@ const Template: StoryFn<ButtonActionProps> = (args: ButtonActionProps) => (
   <ButtonAction {...args} />
 );
 
-export const Primary = Template.bind({});
+export const Primary = Template.bind({}); 
 Primary.args = {
   children: "Pobierz dane",
   variant:'outlined',
