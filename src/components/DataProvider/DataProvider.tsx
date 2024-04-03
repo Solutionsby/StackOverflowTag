@@ -13,9 +13,7 @@ interface DataContextType {
   order: string;
   sort: string;
   fetchFlag:boolean | null;
-  errorMesage:string;
   setFetchFleg:(flag:boolean) => void;
-  setErrorMesege:(msg:string) => void;
   setSort: (sort: string) => void;
   setOrder: (order: string) => void;
   setNumberOfRows: (rows: number) => void;
@@ -33,13 +31,12 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [order, setOrder] = useState<string>("desc");
   const [sort, setSort] = useState<string>("popular");
   const [fetchFlag, setFetchFleg] = useState<boolean | null>(null); 
-  const [errorMesage, setErrorMesege]=useState<string>('');
 
   console.log(fetchFlag)
 
   const fetchData = async () => {
     let allTags: Tag[] = [];
-    for (let page = 1; page <= 2; page++) {
+    for (let page = 1; page <= 25; page++) {
       try {
         const response = await axios.get(
           `https://api.stackexchange.com/2.3/tags?page=${page}&pagesize=100&order=${order}&sort=${sort}&site=stackoverflow`
@@ -56,7 +53,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         setFetchFleg(true)
 
       } catch (error) {
-        setErrorMesege("Wystąpił błąd podczas pobierania");
+        console.log("Wystąpił błąd podczas pobierania",error);
         setFetchFleg(false)
       }
     }
@@ -68,9 +65,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     order,
     sort,
     fetchFlag,
-    errorMesage,
     setFetchFleg,
-    setErrorMesege,
     setSort,
     setOrder,
     setNumberOfRows,
