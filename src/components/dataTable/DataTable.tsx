@@ -28,8 +28,13 @@ export const DataTable: React.FC = () => {
   const getPageData = (): Tag[] => {
     const startIndex = currentPage * numberOfRows;
     const endIndex = startIndex + numberOfRows;
-    return tags.slice(startIndex, endIndex);
+    return !isNaN(numberOfRows) ? tags.slice(startIndex, endIndex) : tags;
   };
+
+  const valPageSize = () => {
+    return !isNaN(numberOfRows) ? numberOfRows : 0;
+  };
+
   const onPaginationModelChange = (params: {
     page: number;
     pageSize: number;
@@ -47,7 +52,7 @@ export const DataTable: React.FC = () => {
         paginationMode="server"
         paginationModel={{
           page: currentPage,
-          pageSize: numberOfRows,
+          pageSize: valPageSize(),
         }}
         onPaginationModelChange={onPaginationModelChange}
       />
