@@ -27,12 +27,10 @@ const DataContext = createContext<DataContextType | undefined>(undefined);
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [tags, setTags] = useState<Tag[]>([]);
-  const [numberOfRows, setNumberOfRows] = useState<number>(1);
+  const [numberOfRows, setNumberOfRows] = useState<number>(10);
   const [order, setOrder] = useState<string>("desc");
   const [sort, setSort] = useState<string>("popular");
   const [fetchFlag, setFetchFleg] = useState<boolean | null>(null); 
-
-  console.log(fetchFlag)
 
   const fetchData = async () => {
     let allTags: Tag[] = [];
