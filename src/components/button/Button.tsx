@@ -4,25 +4,26 @@ import Button from "@mui/material/Button";
 export interface ButtonActionProps {
   children: React.ReactNode;
   handleFetchData: () => void;
-  customColor?: string;
+  color?:"success" | "error" | "primary"
   size?: "small" | "medium" | "large";
+  variant?:"text" | "outlined" | "contained";
+  fetchFlag?: boolean | null ;
 }
 
 export const ButtonAction: React.FC<ButtonActionProps> = ({
   children,
-  handleFetchData,
-  customColor,
+  fetchFlag,
   size = "medium",
+  variant="outlined",
+  color=(fetchFlag === null ? 'primary': (fetchFlag ? "success" : "error")),
+  handleFetchData,
 }) => {
-  const buttonColor = customColor ? customColor : "white";
-
   return (
     <Button
-      sx={{ bgcolor: buttonColor, color: "black" }}
+      color={color}
       size={size}
-      variant="contained"
+      variant={variant}
       onClick={handleFetchData}
-      className="downloadButton"
     >
       {children}
     </Button>

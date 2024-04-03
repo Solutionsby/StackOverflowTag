@@ -12,6 +12,10 @@ interface DataContextType {
   numberOfRows: number;
   order: string;
   sort: string;
+  fetchFlag:boolean | null;
+  errorMesage:string;
+  setFetchFleg:(flag:boolean) => void;
+  setErrorMesege:(msg:string) => void;
   setSort: (sort: string) => void;
   setOrder: (order: string) => void;
   setNumberOfRows: (rows: number) => void;
@@ -28,6 +32,10 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [numberOfRows, setNumberOfRows] = useState<number>(1);
   const [order, setOrder] = useState<string>("desc");
   const [sort, setSort] = useState<string>("popular");
+  const [fetchFlag, setFetchFleg] = useState<boolean | null>(null); 
+  const [errorMesage, setErrorMesege]=useState<string>('');
+
+  console.log(fetchFlag)
 
   const fetchData = async () => {
     let allTags: Tag[] = [];
@@ -45,8 +53,11 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         );
         allTags = [...allTags, ...selectedData];
         setTags(allTags);
+        setFetchFleg(true)
+
       } catch (error) {
-        console.log("Wystąpił błąd podczas pobierania", error);
+        setErrorMesege("Wystąpił błąd podczas pobierania");
+        setFetchFleg(false)
       }
     }
   };
@@ -56,6 +67,10 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     numberOfRows,
     order,
     sort,
+    fetchFlag,
+    errorMesage,
+    setFetchFleg,
+    setErrorMesege,
     setSort,
     setOrder,
     setNumberOfRows,
