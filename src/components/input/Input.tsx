@@ -7,11 +7,12 @@ interface InputProps{
     value:number | string;
     label:string;
     type:string;
+    error:string;
 }
 
 
 
-export const Input:React.FC<InputProps>= ({value,label,type,handle}) =>{
+export const Input:React.FC<InputProps>= ({value,label,type,handle,error}) =>{
 
     return (
         <Box sx={{
@@ -26,6 +27,7 @@ export const Input:React.FC<InputProps>= ({value,label,type,handle}) =>{
         onChange={handle}
         label= {label}
         type={type}
+        helperText={error}
         inputProps={{
             min: 0,
             max:100
