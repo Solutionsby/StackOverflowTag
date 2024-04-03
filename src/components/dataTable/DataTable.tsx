@@ -49,6 +49,7 @@ export const DataTable: React.FC = () => {
         rows={getPageData()}
         columns={columns}
         rowCount={tags.length}
+        loading={!tags.length}
         paginationMode="server"
         paginationModel={{
           page: currentPage,
