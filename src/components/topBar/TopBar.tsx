@@ -6,7 +6,7 @@ import { SelectFetch } from '../select/SelectFetch';
 
 
 export const  TopBar = () =>{
-  const { fetchData,order,setOrder,sort,setSort } = useData();
+  const { fetchData,order,setOrder,sort,setSort,fetchFlag} = useData();
   const handleFetchData = () => {
       fetchData();
     };
@@ -45,7 +45,7 @@ export const  TopBar = () =>{
         }}>
         <SelectFetch label={'Uporządkuj'} selectList={orderSelect} value={order} set={setOrder} />
         <SelectFetch label={'Sortowanie'} selectList={sortSelect} value={sort} set={setSort} />
-        <ButtonAction handleFetchData={handleFetchData}>Pobierz Dane</ButtonAction>
+        <ButtonAction handleFetchData={handleFetchData} fetchFlag={fetchFlag}>Pobierz Dane</ButtonAction>
         </Box>
       </Box>
     )

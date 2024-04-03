@@ -1,11 +1,12 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { ButtonAction, ButtonActionProps } from "../components/button/Button";
 
+
 export default {
   title: "Components/ButtonAction",
   component: ButtonAction,
   argTypes: {
-    customColor: { control: "color" },
+    color:{control:"select" ,options:["success","error",'primary']},
     size: { control: "radio", options: ["small", "medium", "large"] },
     variant:{control:"select", options:["text","outlined","contained"]}
   },
@@ -18,8 +19,8 @@ const Template: StoryFn<ButtonActionProps> = (args: ButtonActionProps) => (
 export const Primary = Template.bind({});
 Primary.args = {
   children: "Pobierz dane",
-  customColor: "#ab9990",
-  variant:'outlined'
+  variant:'outlined',
+  color:'primary'
 };
 
 export const CustomButton = Template.bind({});
